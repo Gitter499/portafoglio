@@ -4,24 +4,23 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-const LCanvas = dynamic(() => import('../components/layout/canvas'), {
+const SuperCanvas = dynamic(() => import('../components/layout/canvas'), {
   ssr: true,
 })
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
-  useEffect(() => {
-    setState({ router })
-  }, [router])
+ 
 
   return (
     <>
-      <Header title={pageProps.title} />
-      <Dom>
+      
+      <div className='absolute top-0 left-0 z-10 w-screen h-screen overflow-hidden'>
         <Component {...pageProps} />
-      </Dom>
-      {Component?.r3f && <LCanvas>{Component.r3f(pageProps)}</LCanvas>}
+      </div>
+      {Component?.r3f && <SuperCanvas>{Component.r3f(pageProps)}</SuperCanvas>}
     </>
   )
-export default MyApp
+}
+export default App

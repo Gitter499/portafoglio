@@ -1,13 +1,27 @@
-import { FC, useState } from "react";
+import { Preload } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { FC, ReactElement, useState } from "react";
 
-export interface IProps {};
+export interface IProps {
+    children: ReactElement
+};
 
-export const SuperCanvas: FC<IProps> = (props) => {
-   const [ error, setError ] = useState(null);
-   const [ loading, setLoading ] = useState(false);
+const SuperCanvas: FC<IProps> = (props) => {
+
+
+
     return (
-        <div>
-            
-        </div>
-    );
+        <Canvas
+            style={{
+                position: 'absolute',
+                top: 0,
+            }}
+        >
+
+            <Preload all />
+            {props.children}
+        </Canvas>
+    )
 }
+
+export default SuperCanvas
