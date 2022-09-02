@@ -1,6 +1,8 @@
+
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { Box } from '../components/canvas/Box'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -32,5 +34,12 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
+// @ts-ignore
+Home.r3f = (props) => {
+  return (
+   <>
+    <Box />
+   </>
+  )
+}
 export default Home
